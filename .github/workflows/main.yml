@@ -17,12 +17,17 @@ jobs:
 
     - name: Configurar Git
       run: |
-        git config user.email "aandresarango087@gmail.com"
-        git config user.name "Andrres"
+        git config user.email "aandres@gmail.com"
+        git config user.name "andres"
 
     - name: Fusionar cambios automáticamente en la rama prueba2
       run: |
         git fetch origin
         git checkout prueba2
         git merge --allow-unrelated-histories --no-ff origin/prueba -m "Automatically merge changes from prueba to prueba2"
+
+        git checkout --theirs Suma/suma.html
+        
+        git add Suma/suma.html
+        git commit -m "Automatically resolve merge conflicts"
         git push origin prueba2
